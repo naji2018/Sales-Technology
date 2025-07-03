@@ -90,6 +90,17 @@ galleryImages.forEach((image, index) => {
     thumb.dataset.arrayIndex = index;
     thumb.dataset.selected = index === 1 ? true : false; // Set the first thumbnail as selected, others as not selected
 
+    thumb.addEventListener("click", function() {
+        mainImageElement.src = image.src;
+        mainImageElement.alt = image.alt;
+
+        // Update the selected state of thumbnails
+        thumbnails.querySelectorAll("img").forEach(thumb => {
+            thumb.dataset.selected = thumb === this ? true : false;
+        });
+    });
+
     thumbnails.appendChild(thumb);
    
 });
+  
