@@ -12,8 +12,24 @@ function CelsiusToFahr(celsius) {
 }
 
 
+let currentHour= new Date().getHours();
 
-const greetingText =  "GOOD MORNING";
+let greetingText;
+if (currentHour < 12) {
+    greetingText = "Good Morning";
+}
+else if (currentHour < 18) {
+    greetingText = "Good Afternoon";    
+}
+else {
+    greetingText = "Good Evening";
+}           
+
+
+
+// Greeting text and weather information
+
+
 const WeatherCoondition = "SUNNY";
 const userLocation = "ZAGREB";
 let temperature = 30; // Celsius
@@ -52,6 +68,10 @@ setInterval(() => {
     document.querySelector("span[data-time=minutes]").textContent = localTime.getMinutes().toString().padStart(2, '0');
     document.querySelector("span[data-time=seconds]").textContent = localTime.getSeconds().toString().padStart(2, '0');
     }, 1000);
+
+
+
+
 
 // Gallery section
 
