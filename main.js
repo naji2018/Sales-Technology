@@ -15,6 +15,45 @@ const galleryImages = [
     
 ];
 
+const productsNew = [
+    {
+      "title": "AstroFiction",
+      "author": "John Doe",
+      "price": 49.9,
+      "image": "./assets/products/img6.png"
+    },
+    {
+      "title": "Space Odissey",
+      "author": "Marie Anne",
+      "price": 35,
+      "image": "./assets/products/img1.png"
+    },
+    {
+      "title": "Doomed City",
+      "author": "Jason Cobert",
+      "price": 0,
+      "image": "./assets/products/img2.png"
+    },
+    {
+      "title": "Black Dog",
+      "author": "John Doe",
+      "price": 85.35,
+      "image": "./assets/products/img3.png"
+    },
+    {
+      "title": "My Little Robot",
+      "author": "Pedro Paulo",
+      "price": 0,
+      "image": "./assets/products/img5.png"
+    },
+    {
+      "title": "Garden Girl",
+      "author": "Ankit Patel",
+      "price": 45,
+      "image": "./assets/products/img4.png"
+    }
+  ]
+
 
 function menuHandler() {
 
@@ -117,8 +156,47 @@ galleryImages.forEach((image, index) => {
 });
 }
 
+
+
+/// Prodact section
+
+//   <div class="product-item">
+//              <img src="./assets/products/img6.png" alt="AstroFiction">
+//              <div class="product-details">
+//                 <h3 class="product-title">AstroFiction</h3>
+//                 <p class="product-author">John Doe</p>
+//                 <p class="price-title">Price</p>
+//                 <p class="product-price">$ 49.90</p>
+//              </div>
+//           </div>
+
+
+function productHandler() {
+ 
+
+    let productSection = document.querySelector(".products-area");
+
+    productsNew.forEach(function(productsNew, index){
+
+        let productElm = document.createElement("div");
+        productElm.classList.add("product-item");
+
+        let productImage = document.createElement("img");
+        productImage.src = productsNew.image;
+        productImage.alt = "Image for " + productsNew.title;
+
+        productElm.append(productImage);
+
+        productSection.append(productElm);
+    });
+
+}
+
+
+
 ///page load event listener
 menuHandler();
 greetingHandler();
 clockHandler();
 galleryHandler();
+productHandler();
