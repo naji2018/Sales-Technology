@@ -1,18 +1,36 @@
-document.querySelector("#open-nav-menu").addEventListener("click", function() {
+
+const galleryImages = [
+    {
+        "src": "./assets/gallery/image1.jpg",
+        "alt": "image 1"
+    },
+    {
+        "src": "./assets/gallery/image2.jpg",
+        "alt": "image 2"
+    },
+    {
+        "src": "./assets/gallery/image3.jpg",
+        "alt": "image 3"
+    }
+    
+];
+
+
+function menuHandler() {
+
+    document.querySelector("#open-nav-menu").addEventListener("click", function() {
     document.querySelector("header nav .wrapper").classList.add("nav-open");
 });
 document.querySelector("#close-nav-menu").addEventListener("click", function() {
     document.querySelector("header nav .wrapper").classList.remove("nav-open");
 });
-
-//Greeting Section
-// Function to convert Fahrenheit to Celsius
+}
 function CelsiusToFahr(celsius) {
     return (celsius * 9/5) + 32;
 }
 
-
-let currentHour= new Date().getHours();
+function greetingHandler() {
+    let currentHour= new Date().getHours();
 
 let greetingText;
 if (currentHour < 12) {
@@ -23,13 +41,9 @@ else if (currentHour < 18) {
 }
 else {
     greetingText = "Good Evening";
-}           
-
-
-
-// Greeting text and weather information
-
-
+}   
+// Weather data
+// Assuming we have a weather condition and location        
 const WeatherCoondition = "SUNNY";
 const userLocation = "ZAGREB";
 let temperature = 30; // Celsius
@@ -53,13 +67,11 @@ document.querySelector(".weather-group").addEventListener("click", function(e) {
 });  
     
 
+}
 
-                                                            ////// // - Date- ////////
-
-
-// Function to format the date
-
-let localTime = new Date();
+   
+function clockHandler() {
+    let localTime = new Date();
 
 setInterval(() => {
 
@@ -68,31 +80,11 @@ setInterval(() => {
     document.querySelector("span[data-time=minutes]").textContent = localTime.getMinutes().toString().padStart(2, '0');
     document.querySelector("span[data-time=seconds]").textContent = localTime.getSeconds().toString().padStart(2, '0');
     }, 1000);
-
-
-
-
+}
 
 // Gallery section
 
-
-
-const galleryImages = [
-    {
-        "src": "./assets/gallery/image1.jpg",
-        "alt": "image 1"
-    },
-    {
-        "src": "./assets/gallery/image2.jpg",
-        "alt": "image 2"
-    },
-    {
-        "src": "./assets/gallery/image3.jpg",
-        "alt": "image 3"
-    }
-    
-];
-
+function galleryHandler() {
 
 let mainImageElement = document.querySelector("#gallery img");
 let thumbnails = document.querySelector("#gallery .thumbnails");
@@ -123,4 +115,10 @@ galleryImages.forEach((image, index) => {
     thumbnails.appendChild(thumb);
    
 });
-  
+}
+
+///page load event listener
+menuHandler();
+greetingHandler();
+clockHandler();
+galleryHandler();
